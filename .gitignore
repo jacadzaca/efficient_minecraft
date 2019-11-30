@@ -1,5 +1,3 @@
-build.sh
-run.sh
 settings_to_volume.py
 MinecraftServer/*
 logs/*
