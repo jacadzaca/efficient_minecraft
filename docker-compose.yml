@@ -15,4 +15,5 @@ services:
       - '$PWD/settings/server.properties:/minecraft/server.properties'
       - '$PWD/MinecraftServer:/minecraft/MinecraftServer'
       - '$PWD/logs:/minecraft/logs'
+    container_name: mc
     restart: always
