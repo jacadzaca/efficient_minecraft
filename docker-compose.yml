@@ -1,0 +1,16 @@
+version: "3"
+services:
+  minecraft:
+    build: .
+      args:
+        - MINECRAFT_VERSION=1.12
+    expose:
+      - "25565"
+    volumes:
+      - '$PWD/settings/eula.txt:/minecraft/eula.txt'
+      - '$PWD/settings/banned-ips.json:/minecraft/banned-ips.json'
+      - '$PWD/settings/whitelist.json:/minecraft/whitelist.json'
+      - '$PWD/settings/ops.json:/minecraft/ops.json'
+      - '$PWD/settings/banned-players.json:/minecraft/banned-players.json'
+      - '$PWD/settings/server.properties:/minecraft/server.properties'
+    restart: always
