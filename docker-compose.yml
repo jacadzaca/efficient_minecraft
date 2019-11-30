@@ -11,6 +11,7 @@ services:
       - '$PWD/settings/ops.json:/minecraft/ops.json'
       - '$PWD/settings/banned-players.json:/minecraft/banned-players.json'
       - '$PWD/settings/server.properties:/minecraft/server.properties'
+      #the folder name must be the same as settings/server.properties.level-name
       - '$PWD/MinecraftServer:/minecraft/MinecraftServer'
       - '$PWD/logs:/minecraft/logs'
     container_name: mc
