@@ -2,8 +2,6 @@ version: "3"
 services:
   minecraft:
     build: .
-      args:
-        - MINECRAFT_VERSION=1.12
     expose:
       - "25565"
     volumes:
