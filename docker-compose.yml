@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   minecraft:
     build: .
@@ -14,8 +14,6 @@ services:
       #the folder name must be the same as settings/server.properties.level-name
       - '$PWD/MinecraftServer:/minecraft/MinecraftServer'
       - '$PWD/logs:/minecraft/logs'
-    resources:
-      limits:
-        memory: 2G
+    mem_limit: 2G
     container_name: mc
     restart: always
