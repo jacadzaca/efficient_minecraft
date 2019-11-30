@@ -7,7 +7,7 @@ ENTRYPOINT ["entrypoint.sh"]
 VOLUME /minecraft/logs
 
 #the folder name must be whatever is specified in settings/server.properties.level-name
-VOLUME /minecraft/world
+VOLUME /minecraft/MinecraftServer
 
 EXPOSE 25565
 
