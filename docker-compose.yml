@@ -14,5 +14,8 @@ services:
       #the folder name must be the same as settings/server.properties.level-name
       - '$PWD/MinecraftServer:/minecraft/MinecraftServer'
       - '$PWD/logs:/minecraft/logs'
+    resources:
+      limits:
+        memory: 2G
     container_name: mc
     restart: always
