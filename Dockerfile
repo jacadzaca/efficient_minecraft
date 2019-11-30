@@ -3,7 +3,11 @@ FROM adoptopenjdk/openjdk8-openj9:alpine-slim
 WORKDIR /minecraft
 ENTRYPOINT ["entrypoint.sh"]
 
+
 VOLUME /minecraft/logs
+
+#the folder name must be whatever is specified in settings/server.properties.level-name
+VOLUME /minecraft/world
 
 EXPOSE 25565
 
@@ -13,5 +17,4 @@ ARG MINECRAFT_URL=https://s3.amazonaws.com/Minecraft.Download/versions/${MINECRA
 
 ADD ${MINECRAFT_URL} /minecraft/${MINECRAFT_JAR}
 
-COPY settings /minecraft
 COPY entrypoint.sh /usr/local/bin
