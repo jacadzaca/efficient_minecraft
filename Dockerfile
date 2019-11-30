@@ -3,12 +3,6 @@ FROM adoptopenjdk/openjdk8-openj9:alpine-slim
 WORKDIR /minecraft
 ENTRYPOINT ["entrypoint.sh"]
 
-
-VOLUME /minecraft/logs
-
-#the folder name must be whatever is specified in settings/server.properties.level-name
-VOLUME /minecraft/MinecraftServer
-
 EXPOSE 25565
 
 ARG MINECRAFT_VERSION=1.12

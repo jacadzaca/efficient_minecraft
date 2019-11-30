@@ -13,4 +13,6 @@ services:
       - '$PWD/settings/ops.json:/minecraft/ops.json'
       - '$PWD/settings/banned-players.json:/minecraft/banned-players.json'
       - '$PWD/settings/server.properties:/minecraft/server.properties'
+      - '$PWD/MinecraftServer:/minecraft/MinecraftServer'
+      - '$PWD/logs:/minecraft/logs'
     restart: always
