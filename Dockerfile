@@ -1,5 +1,7 @@
 FROM adoptopenjdk/openjdk8-openj9:alpine-slim
+
 WORKDIR /minecraft
+ENTRYPOINT ["entrypoint.sh"]
 
 EXPOSE 25565
 
@@ -9,5 +11,6 @@ ARG MINECRAFT_URL=https://s3.amazonaws.com/Minecraft.Download/versions/${MINECRA
 
 RUN apk --no-cache add wget
 RUN wget ${MINECRAFT_URL}
+
 COPY settings /minecraft
-ENTRYPOINT java -jar $1
+COPY entrypoint.sh /usr/local/bin
