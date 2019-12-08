@@ -4,6 +4,7 @@ services:
     build: .
     expose:
       - "25565"
+      - "25575"
     volumes:
       - '$PWD/settings/eula.txt:/minecraft/eula.txt'
       - '$PWD/settings/banned-ips.json:/minecraft/banned-ips.json'
