@@ -7,7 +7,7 @@ ARG MINECRAFT_URL=https://s3.amazonaws.com/Minecraft.Download/versions/${MINECRA
 WORKDIR /minecraft
 ENTRYPOINT ["entrypoint.sh"]
 
-EXPOSE 25565
+EXPOSE 25565, 25575
 
 ADD ${MINECRAFT_URL} /minecraft/${MINECRAFT_JAR}
 
