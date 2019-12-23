@@ -15,6 +15,9 @@ services:
       #the folder name must be the same as settings/server.properties.level-name
       - '$PWD/MinecraftServer:/minecraft/MinecraftServer'
       - '$PWD/logs:/minecraft/logs'
+      #volumes specific to a forge server
+      - '$PWD/mods:/minecraft/mods'
+      - '$PWD/settings:/minecraft/config'
     mem_limit: 2G
     container_name: mc
     restart: always
