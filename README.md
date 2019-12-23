@@ -26,3 +26,4 @@ RCON is allowed by the default, it's running on port 25575
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+By using this program you agree to the Minecraft EULA
