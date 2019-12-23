@@ -1,18 +1,20 @@
 FROM adoptopenjdk/openjdk8-openj9:alpine-slim
 
-ARG MINECRAFT_VERSION=1.12
+ARG MINECRAFT_VERSION=latest
 
 WORKDIR /minecraft
+
 ENTRYPOINT ["entrypoint.sh"]
+COPY entrypoint.sh /usr/local/bin
 
 EXPOSE 25565 25575
 
+COPY download_server.sh .
 RUN apk update --no-cache && apk add --no-cache \
         curl \
         jq \
-    && curl https://launchermeta.mojang.com/mc/game/version_manifest.json | jq '. | .versions[] | select(.id == "'"$MINECRAFT_VERSION"'") | .url' | xargs curl | jq '.downloads.server.url' | xargs curl > server.jar \
+    && ./download_server.sh \
+    && rm download_server.sh \
     && apk del \
         curl \
         jq
-
-COPY entrypoint.sh /usr/local/bin
