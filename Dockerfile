@@ -1,6 +1,8 @@
 FROM adoptopenjdk/openjdk8-openj9:alpine-slim
 
 ARG MINECRAFT_VERSION=latest
+ARG TYPE=vanilla
+ARG FORGE_VERSION=None
 
 WORKDIR /minecraft
 
