@@ -15,7 +15,7 @@ All the config files that are used by the server are located in the settings/ di
 
 By the default, the container's memory limit is set to 2G 
 
-The pre-selected Minecraft version is 1.12, you can choose what version you prefer by editing the Dockerfile or supplying the version during the build process:
+When not specifed, the image downloads the latest version of a Minecraft server. You can choose what version you prefer by editing the Dockerfile or supplying the version during the build process:
 ```bash
 docker-compose build --build-arg MINECRAFT_VERSION={PREFFERED_VERSION}
 ``` 
