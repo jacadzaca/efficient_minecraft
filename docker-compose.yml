@@ -1,6 +1,6 @@
 version: "2.2"
 services:
-  minecraft:
+  server:
     build: .
     expose:
       - "25565"
