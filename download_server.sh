@@ -18,6 +18,10 @@ if [[ $TYPE == 'forge' ]]; then
     FORGE_URL='http://files.minecraftforge.net/maven/net/minecraftforge/forge/'"$MINECRAFT_VERSION"''-"$FORGE_VERSION"'/forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
     FORGE_INSTALLER_JAR='forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
     FORGE_EXE='forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-universal.jar'
+    if [[ ${MINECRAFT_VERSION//./} -gt 1131 ]]; then
+        FORGE_EXE='forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'.jar'
+    fi
+    echo $FORGE_EXE
     curl -o $FORGE_INSTALLER_JAR $FORGE_URL && \
         java -jar $FORGE_INSTALLER_JAR --installServer && \
         rm $FORGE_INSTALLER_JAR $FORGE_INSTALLER_JAR.log && \
