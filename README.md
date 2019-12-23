@@ -17,7 +17,7 @@ By the default, the container's memory limit is set to 2G
 
 When not specifed, the image downloads the latest version of a Minecraft server. You can choose what version you prefer by editing the Dockerfile or supplying the version during the build process:
 ```bash
-docker-compose build --build-arg MINECRAFT_VERSION={PREFFERED_VERSION}
+docker-compose build --build-arg MINECRAFT_VERSION=PREFFERED_VERSION
 ``` 
 
 ## RCON
