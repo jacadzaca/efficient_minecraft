@@ -7,7 +7,7 @@ This docker image utilizes the OpenJ9 virtual machine to provide a resource-effi
 ##  Usage
 To start a  Minecraft server, for the first time, just build the image and make docker run it, using:
 ```bash
-docker-compose build && docker-compose up -d
+docker-compose build --force-rm && docker-compose up -d
 ```
 ## Configuration
 
