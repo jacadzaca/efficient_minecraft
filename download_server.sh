@@ -13,7 +13,7 @@ if [[ $TYPE == 'vanilla' ]]; then
 fi
 
 if [[ $TYPE == 'forge' ]]; then
-    #downloads a forge server of
+    #downloads a forge server
     #this section requires the $FORGE_VERSION variable to be specifed
     FORGE_URL='http://files.minecraftforge.net/maven/net/minecraftforge/forge/'"$MINECRAFT_VERSION"''-"$FORGE_VERSION"'/forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
     FORGE_INSTALLER_JAR='forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
@@ -26,4 +26,14 @@ if [[ $TYPE == 'forge' ]]; then
         java -jar $FORGE_INSTALLER_JAR --installServer && \
         rm $FORGE_INSTALLER_JAR $FORGE_INSTALLER_JAR.log && \
         mv $FORGE_EXE server.jar
+fi
+
+if [[ $TYPE == 'spigot' ]]; then
+	#downloads a spigot server
+	BUILD_TOOLS_URL="https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"
+	BUILD_TOOLS_JAR="BuildTools.jar"
+	curl -o $BUILD_TOOLS_JAR && \
+		java -jar $BUILD_TOOLS_JAR --rev $MINECRAFT_VERSION && \
+		rm $BUILD_TOOLS_JAR && \
+		mv spigot-*.jar server.jar
 fi

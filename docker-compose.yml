@@ -18,6 +18,11 @@ services:
       #volumes specific to a forge server
       - '$PWD/mods:/minecraft/mods'
       - '$PWD/settings:/minecraft/config'
+      #volumes specific to a spigot server
+      - '$PWD/settings/bukkit.yml:/minecraft/bukkit.yml'
+      - '$PWD/settings/spigot.yml:/minecraft/spigot.yml'
+      - '$PWD/settings/commands.yml:/minecraft/commands.yml'
+      - '$PWD/plugins:/minecraft/plugins'
     mem_limit: 2G
     container_name: mc
     restart: always
