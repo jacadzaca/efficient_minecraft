@@ -29,11 +29,13 @@ if [[ $TYPE == 'forge' ]]; then
 fi
 
 if [[ $TYPE == 'spigot' ]]; then
-	#downloads a spigot server
-	BUILD_TOOLS_URL="https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"
-	BUILD_TOOLS_JAR="BuildTools.jar"
-	curl -o $BUILD_TOOLS_JAR && \
-		java -jar $BUILD_TOOLS_JAR --rev $MINECRAFT_VERSION && \
-		rm $BUILD_TOOLS_JAR && \
-		mv spigot-*.jar server.jar
+    #downloads a spigot server
+    BUILD_TOOLS_URL="https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"
+    BUILD_TOOLS_JAR="BuildTools.jar"
+    apk update --no-cache && apk add --no-cache git
+    curl $BUILD_TOOLS_URL -o $BUILD_TOOLS_JAR && \
+        java -jar $BUILD_TOOLS_JAR --rev $MINECRAFT_VERSION && \
+        rm $BUILD_TOOLS_JAR && \
+        mv spigot-*.jar server.jar
+    apk del git
 fi
