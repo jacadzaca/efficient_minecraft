@@ -13,7 +13,7 @@ services:
       - '$PWD/settings/banned-players.json:/minecraft/banned-players.json'
       - '$PWD/settings/server.properties:/minecraft/server.properties'
       #the folder name must be the same as settings/server.properties.level-name
-      - '$PWD/world:/minecraft/world'
+      - '$PWD/world:/minecraft/MinecraftServer'
       - '$PWD/logs:/minecraft/logs'
       #volumes specific to a forge server
       - '$PWD/mods:/minecraft/mods'
