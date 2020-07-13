@@ -1,3 +1,4 @@
+#!/bin/sh
 [[ -z $MINECRAFT_VERSION ]] \
     && MINECRAFT_VERSION=$(curl https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -r '.latest | .release')
 
