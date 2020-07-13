@@ -3,7 +3,6 @@
 
 case $TYPE in
     'vanilla' )
-        #download the server.jar
         curl https://launchermeta.mojang.com/mc/game/version_manifest.json | \
             jq '.versions[] | select(.id == "'"$MINECRAFT_VERSION"'") | .url' | \
             xargs curl | \
@@ -11,7 +10,6 @@ case $TYPE in
             xargs curl > server.jar
         ;;
     'forge' )
-        #downloads a forge server
         #this section requires the $FORGE_VERSION variable to be specifed
         FORGE_URL='http://files.minecraftforge.net/maven/net/minecraftforge/forge/'"$MINECRAFT_VERSION"''-"$FORGE_VERSION"'/forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
         FORGE_INSTALLER_JAR='forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
@@ -24,7 +22,6 @@ case $TYPE in
             mv $FORGE_EXE server.jar
         ;;
     'spigot' )
-        #downloads a spigot server
         BUILD_TOOLS_URL="https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"
         BUILD_TOOLS_JAR="BuildTools.jar"
         apk update --no-cache && apk add --no-cache git
