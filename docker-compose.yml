@@ -6,23 +6,23 @@ services:
       - "25565"
       - "25575"
     volumes:
-      - '$PWD/settings/eula.txt:/minecraft/eula.txt'
-      - '$PWD/settings/banned-ips.json:/minecraft/banned-ips.json'
-      - '$PWD/settings/whitelist.json:/minecraft/whitelist.json'
-      - '$PWD/settings/ops.json:/minecraft/ops.json'
-      - '$PWD/settings/banned-players.json:/minecraft/banned-players.json'
-      - '$PWD/settings/server.properties:/minecraft/server.properties'
+      - './settings/eula.txt:/minecraft/eula.txt'
+      - './settings/banned-ips.json:/minecraft/banned-ips.json'
+      - './settings/whitelist.json:/minecraft/whitelist.json'
+      - './settings/ops.json:/minecraft/ops.json'
+      - './settings/banned-players.json:/minecraft/banned-players.json'
+      - './settings/server.properties:/minecraft/server.properties'
       #the folder name must be the same as settings/server.properties.level-name
-      - '$PWD/world:/minecraft/MinecraftServer'
-      - '$PWD/logs:/minecraft/logs'
+      - './world:/minecraft/MinecraftServer'
+      - './logs:/minecraft/logs'
       #volumes specific to a forge server
-      #- '$PWD/mods:/minecraft/mods'
-      #- '$PWD/settings:/minecraft/config'
+      #- './mods:/minecraft/mods'
+      #- './settings:/minecraft/config'
       #volumes specific to a spigot server
-      #- '$PWD/settings/bukkit.yml:/minecraft/bukkit.yml'
-      #- '$PWD/settings/spigot.yml:/minecraft/spigot.yml'
-      #- '$PWD/settings/commands.yml:/minecraft/commands.yml'
-      #- '$PWD/plugins:/minecraft/plugins'
+      #- './settings/bukkit.yml:/minecraft/bukkit.yml'
+      #- './settings/spigot.yml:/minecraft/spigot.yml'
+      #- './settings/commands.yml:/minecraft/commands.yml'
+      #- './plugins:/minecraft/plugins'
     mem_limit: 2G
     container_name: mc
     restart: always
