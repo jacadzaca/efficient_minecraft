@@ -7,7 +7,7 @@ case $TYPE in
             jq '.versions[] | select(.id == "'"$MINECRAFT_VERSION"'") | .url' | \
             xargs curl | \
             jq '.downloads.server.url' | \
-            xargs curl > server.jar
+            xargs curl -o server.jar
         ;;
     'forge' )
         #this section requires the $FORGE_VERSION variable to be specifed
