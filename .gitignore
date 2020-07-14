@@ -1,4 +1,5 @@
 settings_to_volume.py
-MinecraftServer/*
+world/*
 logs/*
 mods/*
+settings/*
