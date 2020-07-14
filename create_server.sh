@@ -64,6 +64,8 @@ done
 CMD="docker run -d \
     --name $NAME \
     --memory $MAX_MEMORY \
+    -p 25565:25565
+    -p 25575:25575
     --mount type=bind,source=$PWD/logs,target=/minecraft/logs \
     --mount type=bind,source=$PWD/world,target=/minecraft/$LEVEL_NAME \
     --mount type=bind,source=$PWD/settings/eula.txt,target=/minecraft/eula.txt \
