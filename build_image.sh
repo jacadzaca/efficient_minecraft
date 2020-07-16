@@ -2,13 +2,19 @@
 while getopts "v:t:f:" opt; do
     case $opt in
         v )
-            VERSION=$OPTARG
+            [ -z $OPTARG ] \
+                && VERSION="" \
+                || VERSION=$OPTARG
             ;;
         t )
-            TYPE=$OPTARG
+            [ -z $OPTARG ] \
+                && TYPE="" \
+                || TYPE=$OPTARG
             ;;
         f )
-            FORGE_VERSION=$OPTARG
+            [ -z $OPTARG ] \
+                && FORGE_VERSION=""
+                || FORGE_VERSION=$OPTARG
             ;;
         * )
             echo "Usage: build.sh [-v] (version) [-t] (type) [-f] (forge version)"
