@@ -1,5 +1,5 @@
 #!/bin/sh
-while getopts "v:t:vForge:" opt; do
+while getopts "v:t:f:" opt; do
     case $opt in
         v )
             VERSION=$OPTARG
@@ -7,7 +7,7 @@ while getopts "v:t:vForge:" opt; do
         t )
             TYPE=$OPTARG
             ;;
-        vForge )
+        f )
             FORGE_VERSION=$OPTARG
             ;;
         * )
