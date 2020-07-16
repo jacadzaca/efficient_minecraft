@@ -5,14 +5,14 @@
     exit 1
 
 case $TYPE in
-    'vanilla' )
+    vanilla )
         curl https://launchermeta.mojang.com/mc/game/version_manifest.json | \
             jq '.versions[] | select(.id == "'"$MINECRAFT_VERSION"'") | .url' | \
             xargs curl | \
             jq '.downloads.server.url' | \
             xargs curl -o server.jar
         ;;
-    'forge' )
+    forge )
         #this section requires the $FORGE_VERSION variable to be specifed
         [ -z $FORGE_VERSION ] \
             && echo "Cannot build an forge image, forge version missing" \
@@ -24,7 +24,7 @@ case $TYPE in
             rm $FORGE_INSTALLER_JAR $FORGE_INSTALLER_JAR.log && \
             mv forge-*.jar server.jar
         ;;
-    'spigot' )
+    spigot )
         BUILD_TOOLS_URL="https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"
         BUILD_TOOLS_JAR="BuildTools.jar"
         apk update --no-cache && apk add --no-cache git
