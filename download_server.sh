@@ -1,6 +1,8 @@
 #!/bin/sh
-[[ -z $MINECRAFT_VERSION ]] \
-    && MINECRAFT_VERSION=$(curl https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -r '.latest | .release')
+[ -z $MINECRAFT_VERSION ] \
+    && echo "No Minecraft version specifed!" \
+    && echo "Usage: build_image.sh [-v] (game version)"; \
+    exit 1
 
 case $TYPE in
     'vanilla' )
@@ -12,6 +14,9 @@ case $TYPE in
         ;;
     'forge' )
         #this section requires the $FORGE_VERSION variable to be specifed
+        [ -z $FORGE_VERSION ] \
+            && echo "Cannot build an forge image, forge version missing" \
+            && echo "Usage: build_image.sh [-f] (forge version)"
         FORGE_URL='http://files.minecraftforge.net/maven/net/minecraftforge/forge/'"$MINECRAFT_VERSION"''-"$FORGE_VERSION"'/forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
         FORGE_INSTALLER_JAR='forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
         curl -o $FORGE_INSTALLER_JAR $FORGE_URL && \
