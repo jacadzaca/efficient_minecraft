@@ -6,17 +6,16 @@ ARG FORGE_VERSION=''
 
 WORKDIR /minecraft
 
-ENTRYPOINT ["entrypoint.sh"]
-COPY entrypoint.sh /usr/local/bin
-
 EXPOSE 25565 25575
 
-COPY download_server.sh .
-RUN apk update --no-cache && apk add --no-cache \
-        curl \
-        jq \
+ENTRYPOINT ["entrypoint"]
+
+RUN apk update --no-cache \
+    && apk add --no-cache curl jq \
+    && curl -o /usr/local/bin/entrypoint https://raw.githubusercontent.com/jacadzaca/efficient_minecraft/master/entrypoint.sh \
+    && chmod +x /usr/local/bin/entrypoint \
+    && curl -o download_server.sh https://raw.githubusercontent.com/jacadzaca/efficient_minecraft/master/download_server.sh \
+    && chmod +x download_server.sh \
     && ./download_server.sh \
     && rm download_server.sh \
-    && apk del \
-        curl \
-        jq
+    && apk del curl jq
