@@ -7,7 +7,6 @@
     && (echo "[]" > settings/banned-ips.json) \
     && (echo "eula=true" > settings/eula.txt) \
     && (echo "[]" > settings/banned-players.json) \
-    && echo "Created settings/eula.txt, you can agree to Minecraft EULA by editing it"
 
 mkdir world/ > /dev/null 2>&1
 mkdir logs/ > /dev/null 2>&1
@@ -28,7 +27,6 @@ while getopts ":v:t:m:n:tag:" opt; do
             MAX_MEMORY=$OPTARG
             ;;
         n )
-            echo $OPTARG
             NAME=$OPTARG
             ;;
         tag )
@@ -106,4 +104,3 @@ esac
 #start the container...
 $CMD $IMAGE_TAG \
     && echo "In order to use the server, edit the settings/eula.txt and run 'docker start $NAME'" \
-    || echo "You probably need to run build.sh with arguments -t $TYPE -v $VERSION -tag $IMAGE_TAG"
