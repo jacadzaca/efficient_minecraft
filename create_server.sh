@@ -24,6 +24,11 @@ while getopts "v:t:f:n:m:" opt; do
     esac
 done
 
+curl -o build_image.sh https://raw.githubusercontent.com/jacadzaca/efficient_minecraft/master/build_image.sh \
+    && chmod +x build_image.sh
+curl -o create_container.sh https://raw.githubusercontent.com/jacadzaca/efficient_minecraft/master/create_container.sh \
+    && chmod +x create_container.sh
+
 # no need to set default values, it is done in build_image.sh and create_container.sh
 ./build_image.sh -v $VERSION -t $TYPE -f $FORGE_VERSION \
     && ./create_container.sh -i "minecraft_server:$VERSION-$TYPE" -n $NAME -m $MAX_MEMORY
