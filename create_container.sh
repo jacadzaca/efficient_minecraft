@@ -18,10 +18,14 @@ LEVEL_NAME=world
 while getopts "m:n:i:" opt; do
     case $opt in
         m )
-            MAX_MEMORY=$OPTARG
+            [ -z $OPTARG ] \
+                && MAX_MEMORY="" \
+                || MAX_MEMORY=$OPTARG
             ;;
         n )
-            NAME=$OPTARG
+            [ -z $OPTARG ] \
+                && NAME="" \
+                || NAME=$OPTARG
             ;;
         i )
             IMAGE_TAG=$OPTARG
