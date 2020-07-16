@@ -15,38 +15,23 @@ mkdir crash-reports/ > /dev/null 2>&1
 #must be the same as settings/server.properties.level-name...
 LEVEL_NAME=world
 
-while getopts ":v:t:m:n:tag:" opt; do
+while getopts "m:n:" opt; do
     case $opt in
-        v )
-            VERSION=$OPTARG
-            ;;
-        t )
-            TYPE=$OPTARG
-            ;;
         m )
             MAX_MEMORY=$OPTARG
             ;;
         n )
             NAME=$OPTARG
             ;;
-        tag )
-            IMAGE_TAG=$OPTARG
-            ;;
         * )
-            echo "Usage: create_server [-v] (version) [-t] (type) [-m] (max memory) [-n] (container name) [-tag] (docker image to use)"
-            echo "Example: create_server -v 1.12.2 -t forge -m 3GB -n asdf"
+            echo "Usage: create_container [-m] (max memory) [-n] (container name)"
+            echo "Example: create_container -m 3GB -n minecraft_test"
             exit 1
             ;;
     esac
 done
 
 #set default values...
-[ -z $TYPE ] \
-    && TYPE=vanilla \
-
-[ -z $VERSION ] \
-    && VERSION=$(curl https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -r '.latest | .release')
-
 [ -z $MAX_MEMORY ] \
     && MAX_MEMORY=2GB
 
@@ -54,16 +39,12 @@ done
     && ID=$(date +%N); \
        NAME=minecraft_server_$VERSION_$TYPE_$ID
 
-[ -z $IMAGE_TAG ] \
-    && IMAGE_TAG=minecraft_server:$VERSION-$TYPE
-
-
 #create generic command...
 CMD="docker run -d \
     --name $NAME \
     --memory $MAX_MEMORY \
-    -p 25565:25565
-    -p 25575:25575
+    -p 25565:25565 \
+    -p 25575:25575 \
     --mount type=bind,source=$PWD/logs,target=/minecraft/logs \
     --mount type=bind,source=$PWD/world,target=/minecraft/$LEVEL_NAME \
     --mount type=bind,source=$PWD/settings/eula.txt,target=/minecraft/eula.txt \
