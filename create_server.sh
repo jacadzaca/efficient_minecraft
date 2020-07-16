@@ -35,7 +35,7 @@ while getopts ":v:t:m:n:tag:" opt; do
         * )
             echo "Usage: create_server [-v] (version) [-t] (type) [-m] (max memory) [-n] (container name) [-tag] (docker image to use)"
             echo "Example: create_server -v 1.12.2 -t forge -m 3GB -n asdf"
-            exit 126
+            exit 1
             ;;
     esac
 done
@@ -97,7 +97,7 @@ case $TYPE in
         ;;
     * ) 
         echo "$TYPE is an unsupported server type!"
-        exit 126
+        exit 1
         ;;
 esac
 

@@ -13,7 +13,7 @@ while getopts "v:t:f:" opt; do
         * )
             echo "Usage: build.sh [-v] (version) [-t] (type) [-vForge] (forge version)"
             echo "Example: build.sh -v 1.12.2 -t forge"
-            exit 126
+            exit 1
             ;;
     esac
 done
