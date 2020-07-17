@@ -4,6 +4,7 @@
 # About
 
 This docker image utilizes the OpenJ9 virtual machine to provide a resource-efficient Minecraft server
+Requires [docker](https://get.docker.com/)
 
 ##  Usage
 Create a directory for server files and cd into it:
