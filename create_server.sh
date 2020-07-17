@@ -31,13 +31,13 @@ curl -o create_container.sh https://raw.githubusercontent.com/jacadzaca/efficien
 
 BUILD_CMD="./build_image.sh"
 
-[ -n "$TYPE" ] && BUILD_CMD+="$BUILD_CMD -t $TYPE"
-[ -n "$VERSION" ] && BUILD_CMD+="$BUILD_CMD -v $VERSION"
-[ -n "$FORGE_VERSION" ] && BUILD_CMD+="$BUILD_CMD -f $FORGE_VERSION"
+[ -n "$TYPE" ] && BUILD_CMD="${BUILD_CMD} -t ${TYPE}"
+[ -n "$VERSION" ] && BUILD_CMD="${BUILD_CMD} -v ${VERSION}"
+[ -n "$FORGE_VERSION" ] && BUILD_CMD="${BUILD_CMD} -f ${FORGE_VERSION}"
 
 CREATE_CONTAINER_CMD="./create_container.sh"
-[ -n "$TYPE" ] && BUILD_CMD+="$CREATE_CONTAINER_CMD -t $TYPE"
-[ -n "$NAME" ] && CREATE_CONTAINER_CMD+="$CREATE_CONTAINER_CMD -n $NAME"
-[ -n "$MAX_MEMORY" ] && CREATE_CONTAINER_CMD+="$CREATE_CONTAINER_CMD -m $MAX_MEMORY"
+[ -n "$TYPE" ] && BUILD_CMD="${CREATE_CONTAINER_CMD} -t ${TYPE}"
+[ -n "$NAME" ] && CREATE_CONTAINER_CMD="${CREATE_CONTAINER_CMD} -n ${NAME}"
+[ -n "$MAX_MEMORY" ] && CREATE_CONTAINER_CMD="${CREATE_CONTAINER_CMD} -m ${MAX_MEMORY}"
 
 $BUILD_CMD && $CREATE_CONTAINER_CMD -i "$(cat .last_tag)"
