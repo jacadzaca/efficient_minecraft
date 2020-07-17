@@ -92,4 +92,4 @@ esac
 
 #start the container...
 $CMD $IMAGE_TAG \
-    && echo "In order to use the server, edit the settings/eula.txt and run 'docker start $NAME'"
+    && echo "In order to use the server, edit the settings/eula.txt and run 'docker start $NAME'" \
