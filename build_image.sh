@@ -19,15 +19,15 @@ while getopts "v:t:f:" opt; do
 done
 
 #set default values...
-[ -z $TYPE ] \
+[ -z "$TYPE" ] \
     && TYPE=vanilla \
 
-[ -z $VERSION ] \
+[ -z "$VERSION" ] \
     && VERSION=$(curl https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -r '.latest | .release')
 
 IMAGE_TAG="minecraft_server:$VERSION-$TYPE"
-docker build --tag $IMAGE_TAG \
-             --build-arg MINECRAFT_VERSION=$VERSION \
-             --build-arg TYPE=$TYPE \
-             --build-arg FORGE_VERSION=$FORGE_VERSION https://raw.githubusercontent.com/jacadzaca/efficient_minecraft/master/Dockerfile
-echo $IMAGE_TAG > .last_tag
+docker build --tag "$IMAGE_TAG" \
+             --build-arg MINECRAFT_VERSION="$VERSION" \
+             --build-arg TYPE="$TYPE" \
+             --build-arg FORGE_VERSION="$FORGE_VERSION" https://raw.githubusercontent.com/jacadzaca/efficient_minecraft/master/Dockerfile
+echo "$IMAGE_TAG" > .last_tag
