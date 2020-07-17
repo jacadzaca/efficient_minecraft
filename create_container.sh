@@ -15,7 +15,7 @@ mkdir crash-reports/ > /dev/null 2>&1
 #must be the same as settings/server.properties.level-name...
 LEVEL_NAME=world
 
-while getopts "m:n:i:" opt; do
+while getopts "m:n:i:t:" opt; do
     case $opt in
         m )
             MAX_MEMORY=$OPTARG
@@ -26,9 +26,12 @@ while getopts "m:n:i:" opt; do
         i )
             IMAGE_TAG=$OPTARG
             ;;
+        t )
+            TYPE=$OPTARG
+            ;;
         * )
-            echo "Usage: create_container [-m] (max memory) [-n] (container name) [-i] (docker image tag)"
-            echo "Example: create_container -m 3GB -n minecraft_test -i minecraft-server:test"
+            echo "Usage: create_container [-m] (max memory) [-n] (container name) [-i] (docker image tag) [-t] (type)"
+            echo "Example: create_container -m 3GB -n -t spigot minecraft_test -i minecraft-server:test"
             exit 1
             ;;
     esac
@@ -46,6 +49,9 @@ done
     && echo "No docker iamge specified for create_container.sh!" \
     && echo "Usage: build_image.sh -i (docker image tag)" \
     && exit 1
+
+[ -z $TYPE ] \
+    && TYPE=vanilla
 
 #create generic command...
 CMD="docker run -d \
