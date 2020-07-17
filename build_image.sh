@@ -11,8 +11,8 @@ while getopts "v:t:f:" opt; do
             FORGE_VERSION=$OPTARG
             ;;
         * )
-            echo "Usage: build.sh [-v] (version) [-t] (type) [-f] (forge version)"
-            echo "Example: build.sh -v 1.12.2 -t vanilla"
+            echo "Usage: build_image.sh [-v] (version) [-t] (type) [-f] (forge version)"
+            echo "Example: build_image.sh -v 1.12.2 -t vanilla"
             exit 1
             ;;
     esac

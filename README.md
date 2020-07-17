@@ -18,7 +18,7 @@ To create all needed files and start a latest-version Minecraft server, run:
 ```bash
 ./create_server
 ```
-...you can also give your container a name with:
+...you can also give your container by supplying a -n argument:
 ```bash
 ./create_server -n some-name
 ```
@@ -26,9 +26,13 @@ To extract the server's IP address use:
 ```bash
 docker inspect -f "{{ .NetworkSettings.IPAddress }}" <containerNameOrId>
 ```
+You can now safely remove the script files:
+```bash
+rm build_image.sh create_*
+```
 ## Configuration
 
-All the config files that are used by the server are located in the settings/ directory, you can edit them just like you would edit any other file. After each change, restart the server
+All the config files that are used by the server are located in the settings/ directory, you can edit them just like you would edit any other file. After each set of changes, restart the server
 
 By the default, the container's memory limit is set to 2G, you can specify maximal when building a server:
 ```bash
@@ -62,6 +66,12 @@ In order to create a Spigot server, you must specify the type:
 ./create_server -t spigot
 ```  
 It might take a while to build
+
+## build_image and create_container scripts usage
+```bash
+create_container.sh [-m] (max memory) [-n] (container name) [-i] (docker image tag) [-t] (type)
+build_image.sh [-v] (version) [-t] (type) [-f] (forge version)
+```
 
 ## RCON
 
