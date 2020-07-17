@@ -18,6 +18,10 @@ To create all needed files and start a latest-version Minecraft server, run:
 ```bash
 ./create_server
 ```
+...you can also give your container a name with:
+```bash
+./create_server -n some-name
+```
 To extract the server's IP address use:
 ```bash
 docker inspect -f "{{ .NetworkSettings.IPAddress }}" <containerNameOrId>
