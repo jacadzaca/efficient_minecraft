@@ -19,7 +19,7 @@ case $TYPE in
             && echo "Usage: build_image.sh [-f] (forge version)"
         FORGE_URL='http://files.minecraftforge.net/maven/net/minecraftforge/forge/'"$MINECRAFT_VERSION"''-"$FORGE_VERSION"'/forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
         FORGE_INSTALLER_JAR='forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
-        curl -o "$FORGE_INSTALLER_JAR $FORGE_URL" && \
+        curl -o "$FORGE_INSTALLER_JAR" "$FORGE_URL" && \
             java -jar "$FORGE_INSTALLER_JAR" --installServer && \
             rm "$FORGE_INSTALLER_JAR" "$FORGE_INSTALLER_JAR.log" && \
             mv forge-*.jar server.jar
