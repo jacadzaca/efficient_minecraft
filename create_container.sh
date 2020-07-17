@@ -38,19 +38,19 @@ while getopts "m:n:i:t:" opt; do
 done
 
 #set default values...
-[ -z $MAX_MEMORY ] \
+[ -z "$MAX_MEMORY" ] \
     && MAX_MEMORY=2GB
 
-[ -z $NAME ] \
+[ -z "$NAME" ] \
     && ID=$(date +%N); \
        NAME=minecraft_server_$ID
 
-[ -z $IMAGE_TAG ] \
+[ -z "$IMAGE_TAG" ] \
     && echo "No docker iamge specified for create_container.sh!" \
     && echo "Usage: build_image.sh -i (docker image tag)" \
     && exit 1
 
-[ -z $TYPE ] \
+[ -z "$TYPE" ] \
     && TYPE=vanilla
 
 #create generic command...
@@ -71,7 +71,7 @@ CMD="docker run -d \
     --mount type=bind,source=$PWD/settings/banned-players.json,target=/minecraft/banned-players.json"
 
 #add the specific mounts...
-case $TYPE in
+case "$TYPE" in
     vanilla )
         ;;
     forge )
@@ -98,5 +98,5 @@ case $TYPE in
 esac
 
 #start the container...
-$CMD $IMAGE_TAG \
+$CMD "$IMAGE_TAG" \
     && echo "Your container's name is \e[1;31m$NAME\e[0m" \
