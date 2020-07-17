@@ -40,7 +40,7 @@ done
 
 [ -z $NAME ] \
     && ID=$(date +%N); \
-       NAME=minecraft_server_$VERSION_$TYPE_$ID
+       NAME=minecraft_server_$ID
 
 [ -z $IMAGE_TAG ] \
     && echo "No docker iamge specified for create_container.sh!" \
