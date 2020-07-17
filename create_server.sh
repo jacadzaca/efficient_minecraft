@@ -29,6 +29,15 @@ curl -o build_image.sh https://raw.githubusercontent.com/jacadzaca/efficient_min
 curl -o create_container.sh https://raw.githubusercontent.com/jacadzaca/efficient_minecraft/master/create_container.sh \
     && chmod +x create_container.sh
 
-# no need to set default values, it is done in build_image.sh and create_container.sh
-./build_image.sh -v $VERSION -t $TYPE -f $FORGE_VERSION \
-    && ./create_container.sh -i "minecraft_server:$VERSION-$TYPE" -n $NAME -m $MAX_MEMORY
+BUILD_CMD="./build_image.sh"
+
+[ ! -z $TYPE ] && BUILD_CMD="$BUILD_CMD -t $TYPE"
+[ ! -z $VERSION ] && BUILD_CMD="$BUILD_CMD -v $VERSION"
+[ ! -z $FORGE_VERSION ] && BUILD_CMD="$BUILD_CMD -f $FORGE_VERSION"
+
+CREATE_CONTAINER_CMD="./create_container.sh"
+[ ! -z $NAME ] && CREATE_CONTAINER_CMD="$CREATE_CONTAINER_CMD -n $NAME"
+[ ! -z $MAX_MEMORY ] && CREATE_CONTAINER_CMD="$CREATE_CONTAINER_CMD -m $MAX_MEMORY"
+
+
+$BUILD_CMD && $CREATE_CONTAINER_CMD -i "$(cat .last_tag)"
