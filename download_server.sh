@@ -1,8 +1,8 @@
 #!/bin/sh
 [ -z $MINECRAFT_VERSION ] \
     && echo "No Minecraft version specifed!" \
-    && echo "Usage: build_image.sh [-v] (game version)"; \
-    exit 1
+    && echo "Usage: build_image.sh [-v] (game version)" \
+    && exit 1
 
 case $TYPE in
     vanilla )
