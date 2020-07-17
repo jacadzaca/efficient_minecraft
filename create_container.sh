@@ -43,9 +43,9 @@ done
        NAME=minecraft_server_$VERSION_$TYPE_$ID
 
 [ -z $IMAGE_TAG ] \
-    && echo "No docker iamge specified for create_container.sh!"; \
-    && echo "Usage: build_image.sh -i (docker image tag)"; \
-       exit 1
+    && echo "No docker iamge specified for create_container.sh!" \
+    && echo "Usage: build_image.sh -i (docker image tag)" \
+    && exit 1
 
 #create generic command...
 CMD="docker run -d \
