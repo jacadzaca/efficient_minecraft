@@ -42,8 +42,8 @@ done
     && MAX_MEMORY=2GB
 
 [ -z "$NAME" ] \
-    && ID=$(date +%N); \
-       NAME=minecraft_server_$ID
+    && ID=$(date +%N) \
+    && NAME=minecraft_server_$ID
 
 [ -z "$IMAGE_TAG" ] \
     && echo "No docker iamge specified for create_container.sh!" \
