@@ -27,7 +27,7 @@ To extract the container's/server's IP address use:
 ```bash
 docker inspect -f "{{ .NetworkSettings.IPAddress }}" <containerNameOrId>
 ```
-You can now safely remove the script files:
+The serveri s now up and running. You can now safely remove the script files:
 ```bash
 rm build_image.sh create_*
 ```
