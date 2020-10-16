@@ -35,7 +35,7 @@ rm build_image.sh create_*
 
 All the config files that are used by the server are located in the settings/ directory, you can edit them just like you would edit any other file. After each set of changes, restart the server
 
-By the default, the container's memory limit is set to 2GB. You can specify the maximum when creating a server:
+By default, the container's memory limit is set to 2GB. You can specify the maximum when creating a server:
 ```bash
 ./create_server -m {NUMBER}GB
 ```
