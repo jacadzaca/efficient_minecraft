@@ -49,7 +49,7 @@ When not specifed, the script downloads the latest version of a Minecraft server
 ./create_server -v 1.12.2
 ```
 ### Types
-You can specify what kind of server you would like to be created by supplying an -t argument.
+You can specify what kind of server you would like to be created by supplying an -t argument. If no -t value is specifed, a Vanilla server will be created.
 
 #### Forge Server
 In order to create a Minecraft Forge server, you must specify the type, the Forge version and the Minecraft version coresponding to the Forge's version:
