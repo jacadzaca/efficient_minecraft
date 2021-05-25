@@ -103,6 +103,9 @@ case "$TYPE" in
         touch settings/bukkit.yml
         touch settings/spigot.yml
         touch settings/commands.yml
+        touch settings/paper.yml
+        touch settings/permissions.yml
+        touch settings/help.yml
         mkdir plugins/ > /dev/null 2>&1
         ;;
     * ) 
