@@ -34,4 +34,11 @@ case $TYPE in
             mv spigot-*.jar server.jar
         apk del git
         ;;
+    paper )
+        apk update --no-cache && apk add --no-cache git maven
+        git clone https://github.com/PaperMC/Paper.git && cd Paper/ || return 1
+        ./paper jar
+        mv paperclip.jar ../server.jar && cd ../ && rm -rf Paper/
+        apk del git maven
+        ;;
 esac
