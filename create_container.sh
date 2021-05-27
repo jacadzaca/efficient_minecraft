@@ -91,7 +91,24 @@ case "$TYPE" in
         touch settings/commands.yml
         mkdir plugins/ > /dev/null 2>&1
         ;;
-    * ) 
+    paper )
+        CMD="$CMD \
+            --mount type=bind,source=$PWD/settings/paper.yml,target=/minecraft/paper.yml \
+            --mount type=bind,source=$PWD/settings/permissions.yml,target=/minecraft/permissions.yml \
+            --mount type=bind,source=$PWD/settings/help.yml,target=/minecraft/help.yml \
+            --mount type=bind,source=$PWD/settings/bukkit.yml,target=/minecraft/bukkit.yml \
+            --mount type=bind,source=$PWD/settings/spigot.yml,target=/minecraft/spigot.yml \
+            --mount type=bind,source=$PWD/settings/commands.yml,target=/minecraft/commands.yml \
+            --mount type=bind,source=$PWD/plugins,target=/minecraft/plugins"
+        touch settings/bukkit.yml
+        touch settings/spigot.yml
+        touch settings/commands.yml
+        touch settings/paper.yml
+        touch settings/permissions.yml
+        touch settings/help.yml
+        mkdir plugins/ > /dev/null 2>&1
+        ;;
+    * )
         echo "$TYPE is an unsupported server type!"
         exit 1
         ;;

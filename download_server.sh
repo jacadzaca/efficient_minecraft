@@ -34,4 +34,10 @@ case $TYPE in
             mv spigot-*.jar server.jar
         apk del git
         ;;
+    paper )
+        BUILD=$(curl "https://papermc.io/api/v2/projects/paper/versions/$MINECRAFT_VERSION" | jq '.builds | last')
+        DOWNLOAD_FILE=$(curl "https://papermc.io/api/v2/projects/paper/versions/$MINECRAFT_VERSION/builds/$BUILD/" | jq '.downloads.application.name' | tr -d '"')
+        curl -o server.jar "https://papermc.io/api/v2/projects/paper/versions/$MINECRAFT_VERSION/builds/$BUILD/downloads/$DOWNLOAD_FILE"
+        ;;
 esac
+
