@@ -19,7 +19,7 @@ case $TYPE in
             && echo "Usage: build_image.sh [-f] (forge version)"
         FORGE_URL='http://files.minecraftforge.net/maven/net/minecraftforge/forge/'"$MINECRAFT_VERSION"''-"$FORGE_VERSION"'/forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
         FORGE_INSTALLER_JAR='forge-'"$MINECRAFT_VERSION"'-'"$FORGE_VERSION"'-installer.jar'
-        curl -o "$FORGE_INSTALLER_JAR" "$FORGE_URL" && \
+        curl  -Lo "$FORGE_INSTALLER_JAR" "$FORGE_URL" && \
             java -jar "$FORGE_INSTALLER_JAR" --installServer && \
             rm "$FORGE_INSTALLER_JAR" "$FORGE_INSTALLER_JAR.log" && \
             mv forge-*.jar server.jar
@@ -30,7 +30,7 @@ case $TYPE in
         apk update --no-cache && apk add --no-cache git
         curl "$BUILD_TOOLS_URL" -o "$BUILD_TOOLS_JAR" && \
             java -jar "$BUILD_TOOLS_JAR" --rev "$MINECRAFT_VERSION" && \
-            rm $BUILD_TOOLS_JAR && \
+            rm "$BUILD_TOOLS_JAR" && \
             mv spigot-*.jar server.jar
         apk del git
         ;;
